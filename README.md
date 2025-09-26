@@ -44,30 +44,29 @@ The data file should contain the following columns:
 
 ## Example Usage
 1. Data Preparation
-Ensure the data file `new_force_pairs.csv` is available and the path is correct.
+Ensure the data file `force_pairs.csv` is available and the path is correct.
 2. Running the Code
 Run the following command to start training the model:
-````
+```bash
 python symbolic_regression_model.py
-````
+```
 3. Using the `cgpm` Class
 You can also directly use the cgpm class in a Python script. Here's an example:
-````
+```bash
 from symbolic_regression import cgpm
 
 # Create an instance of cgpm with the data path
-model = cgpm(data_path="analysis/new_force_pairs.csv")
+model = cgpm(data_path)
 
 # Start the training process by calling the instance
 model()  # This triggers symbolic regression training
-
-````
+```
 
 ## Result
 Once the training is complete, the results will be saved to a file named `gp_comparison_summary.csv`. This file contains performance metrics for each model, including training and validation errors.
 
 ## Notes
-1. Make sure the data file path is correct. The `data_path` should point to the `new_force_pairs.csv file`.
+1. Make sure the data file path is correct. The `data_path` should point to the `force_pairs.csv` file.
 2. You can adjust hyperparameters such as `population_size` and `generations` in the cgpm class to optimize the symbolic regression process.
 3. The code will generate multiple `.pkl` model files during execution. These models can be saved or loaded as needed.
 
