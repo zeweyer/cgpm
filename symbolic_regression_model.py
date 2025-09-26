@@ -9,19 +9,18 @@ import joblib
 
 class cgpm:
     def __init__(self, data_path, function_sets=None, input_sets=None, generations=50, population_size=1000):
-        # 数据加载
         data = pd.read_csv(data_path)
         self.r = data["r"].values.reshape(-1, 1)
         self.q = 1.0 / self.r
         self.y = data['F'].values
         
-        # 自定义函数
+        # Self-defined function
         self.smoothing_func = self._create_smoothing_function()
         self.pow_func = self._create_safe_pow_function()
         self.nsum_func = self._create_nsum_function()
         self.aq_func = self._create_aq_function()
 
-        # 设置函数集和输入
+        # Set function set and input
         self.function_sets = function_sets if function_sets else [
             ['add', 'sub', 'mul', 'div', self.nsum_func],
             ['add', 'sub', 'mul', 'div', self.nsum_func, self.pow_func],
@@ -51,7 +50,7 @@ class cgpm:
                 base = np.abs(x)
                 exp = np.clip(y, -5, 5)
                 res = np.power(base, exp)
-                res = np.clip(res, -1e6, 1e6)  # 防止爆炸
+                res = np.clip(res, -1e6, 1e6)
                 valid_mask = np.isfinite(res)
                 mean_val = np.nanmean(res[valid_mask]) if np.any(valid_mask) else 1.0
                 res[~valid_mask] = mean_val
@@ -69,7 +68,6 @@ class cgpm:
         return make_function(function=_aq, name='aq', arity=1)
 
     def __call__(self):
-        # 最终调用，开始训练过程
         self.train()
 
     def train(self):
@@ -102,7 +100,7 @@ class cgpm:
                     est_gp.fit(X_train, y_train)
                     runtime = time.time() - start
 
-                    # 预测 + 过滤非法值
+                    # Pridict
                     y_train_pred = est_gp.predict(X_train)
                     y_val_pred = est_gp.predict(X_val)
 
@@ -110,9 +108,9 @@ class cgpm:
                     val_mask = np.isfinite(y_val_pred)
 
                     if not np.all(train_mask):
-                        print(f"⚠️ 模型 {model_id} 训练集预测有 {np.sum(~train_mask)} 个无效值，已过滤")
+                        print(f"Model {model_id} has {np.sum(~train_mask)} NAN on the training set，which has been removed")
                     if not np.all(val_mask):
-                        print(f"⚠️ 模型 {model_id} 验证集预测有 {np.sum(~val_mask)} 个无效值，已过滤")
+                        print(f"Model {model_id} has {np.sum(~val_mask)} NAN on the testing set，which has been removed")
 
                     y_train_clean = y_train[train_mask]
                     y_train_pred_clean = y_train_pred[train_mask]
@@ -143,7 +141,7 @@ class cgpm:
                     ])
 
                 except Exception as e:
-                    print(f"❌ 模型 {model_id} 训练失败，错误：{e}")
+                    print(f"Model {model_id} fails to training:{e}")
                     results.append([
                         model_id,
                         '+'.join([f.name if hasattr(f, "name") else f for f in fset]),
@@ -151,10 +149,9 @@ class cgpm:
                         np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan
                     ])
 
-        # 保存结果
         columns = ["ID", "primitive set", "inputs", "MAE train", "MAE test", "length", "runtime", "complexity", "costs", "fitness"]
         results_df = pd.DataFrame(results, columns=columns)
         results_df.to_csv("gp_comparison_summary.csv", index=False)
-        print("\n✅ 回归完成，已保存模型结果至 gp_comparison_summary.csv")
+        print("\n Regression completed to save the result in gp_comparison_summary.csv")
         print(results_df)
 
