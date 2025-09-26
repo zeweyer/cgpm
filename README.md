@@ -14,12 +14,7 @@ Before running the code, make sure you have the following dependencies installed
 You can install all dependencies with the following command:
 ### Using `pip` to Install:
 
-1. Clone or download the project:
-    ```bash
-    git clone https://github.com/your-username/your-repository.git
-    cd your-repository
-    ```
-
+1. Clone or download the project
 2. Install the dependencies:
     ```bash
     pip install -r requirements.txt
