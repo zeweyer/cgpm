@@ -34,6 +34,8 @@ scikit-learn
 joblib
 numpy
 
+````
+
 ## Example Usage
 ````
 from symbolic_regression import cgpm
