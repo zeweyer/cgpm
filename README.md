@@ -56,7 +56,7 @@ You can also directly use the cgpm class in a Python script. Here's an example:
 from symbolic_regression import cgpm
 
 # Create an instance of cgpm with the data path
-model = cgpm(data_path)
+model = cgpm(data_path="path_to_your_data.csv")
 
 # Start the training process by calling the instance
 model()  # This triggers symbolic regression training
@@ -75,4 +75,3 @@ If you have any suggestions or issues, feel free to submit an Issue or submit a 
 
 ## Author
 Ziwei Yin
-Contact: zewey.foster@gmail.com
