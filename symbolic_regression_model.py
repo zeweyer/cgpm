@@ -158,7 +158,3 @@ class cgpm:
         print("\n✅ 回归完成，已保存模型结果至 gp_comparison_summary.csv")
         print(results_df)
 
-# 用法示例
-if __name__ == '__main__':
-    model = cgpm(data_path="analysis/new_force_pairs.csv")
-    model()  # 通过调用 cgpm 实例来启动训练过程
