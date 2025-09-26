@@ -24,17 +24,6 @@ You can install all dependencies with the following command:
     ```bash
     pip install -r requirements.txt
     ```
-### `requirements.txt` Example:
-To make it easier for others to install dependencies, include the following in your `requirements.txt` file:
-
-```txt
-pandas
-gplearn
-scikit-learn
-joblib
-numpy
-
-````
 
 ## Data File
 This code requires a data file named `analysis/new_force_pairs.csv`, containing force and distance data. Make sure this data file is available at the specified path, or modify the path in the code accordingly.
