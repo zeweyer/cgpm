@@ -1,4 +1,4 @@
-# CoarseGrainedPotential-SR
+# CoarseGrainedPotentialModel-SR(cgpm)
 This project applies symbolic regression techniques to model coarse-grained potentials from molecular dynamics data. The goal is to automate the extraction of interpretable, physically-based force and energy functions for molecular systems.
 
 ## Installation
