@@ -54,5 +54,4 @@ Once the training is complete, the results will be saved to a file named `gp_com
 ## Contribution
 If you have any suggestions or issues, feel free to submit an Issue or submit a Pull Request.
 
-## Author
-Ziwei Yin
+
