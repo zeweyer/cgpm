@@ -8,13 +8,13 @@ pip install gplearn
 ````
 ## Example Usage
 ````
-from symbolic_regression import CoarseGrainedPotentialModel
+from symbolic_regression import cgpm
 
 # Load your data
 data = load_data('data/force_pairs.csv')
 
 # Train the model
-model = CoarseGrainedPotentialModel()
+model = cgpm()
 model.train(data)
 
 # Evaluate the model
