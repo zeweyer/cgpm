@@ -1,11 +1,39 @@
 # CoarseGrainedPotentialModel-SR(cgpm)
 This project applies symbolic regression techniques to model coarse-grained potentials from molecular dynamics data. The goal is to automate the extraction of interpretable, physically-based force and energy functions for molecular systems.
 
-## Installation
-pip install gplearn
-````
-pip install gplearn
-````
+## Dependencies
+
+Before running the code, make sure you have the following dependencies installed:
+
+- `pandas`
+- `gplearn`
+- `scikit-learn`
+- `joblib`
+- `numpy`
+
+You can install all dependencies with the following command:
+### Using `pip` to Install:
+
+1. Clone or download the project:
+    ```bash
+    git clone https://github.com/your-username/your-repository.git
+    cd your-repository
+    ```
+
+2. Install the dependencies:
+    ```bash
+    pip install -r requirements.txt
+    ```
+### `requirements.txt` Example:
+To make it easier for others to install dependencies, include the following in your `requirements.txt` file:
+
+```txt
+pandas
+gplearn
+scikit-learn
+joblib
+numpy
+
 ## Example Usage
 ````
 from symbolic_regression import cgpm
