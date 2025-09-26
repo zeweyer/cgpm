@@ -21,7 +21,7 @@ You can install all dependencies with the following command:
     ```
 
 ## Data File
-This code requires a data file named `analysis/new_force_pairs.csv`, containing force and distance data. Make sure this data file is available at the specified path, or modify the path in the code accordingly.
+This code requires a data file named `force_pairs.csv`, containing force and distance data. Make sure this data file is available at the specified path, or modify the path in the code accordingly.
 The data file should contain the following columns:
 -`r: Distance data
 -`F: Force data
@@ -39,11 +39,8 @@ You can also directly use the cgpm class in a Python script. Here's an example:
 ```bash
 from symbolic_regression import cgpm
 
-# Create an instance of cgpm with the data path
 model = cgpm(data_path="path_to_your_data.csv")
-
-# Start the training process by calling the instance
-model()  # This triggers symbolic regression training
+model()  
 ```
 
 ## Result
