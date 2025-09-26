@@ -36,21 +36,44 @@ numpy
 
 ````
 
+## Data File
+This code requires a data file named `analysis/new_force_pairs.csv`, containing force and distance data. Make sure this data file is available at the specified path, or modify the path in the code accordingly.
+The data file should contain the following columns:
+-`r: Distance data
+-`F: Force data
+
 ## Example Usage
+1. Data Preparation
+Ensure the data file `new_force_pairs.csv` is available and the path is correct.
+2. Running the Code
+Run the following command to start training the model:
+````
+python symbolic_regression_model.py
+````
+3. Using the `cgpm` Class
+You can also directly use the cgpm class in a Python script. Here's an example:
 ````
 from symbolic_regression import cgpm
 
-# Load your data
-data = load_data('data/force_pairs.csv')
+# Create an instance of cgpm with the data path
+model = cgpm(data_path="analysis/new_force_pairs.csv")
 
-# Train the model
-model = cgpm()
-model.train(data)
-
-# Evaluate the model
-model.evaluate()
+# Start the training process by calling the instance
+model()  # This triggers symbolic regression training
 
 ````
 
 ## Result
-The symbolic regression model successfully extracts a physically interpretable potential function that can be used in coarse-grained molecular simulations. For detailed results, check the 'results/' folder.
+Once the training is complete, the results will be saved to a file named `gp_comparison_summary.csv`. This file contains performance metrics for each model, including training and validation errors.
+
+## Notes
+1. Make sure the data file path is correct. The `data_path` should point to the `new_force_pairs.csv file`.
+2. You can adjust hyperparameters such as `population_size` and `generations` in the cgpm class to optimize the symbolic regression process.
+3. The code will generate multiple `.pkl` model files during execution. These models can be saved or loaded as needed.
+
+## Contribution
+If you have any suggestions or issues, feel free to submit an Issue or submit a Pull Request.
+
+## Author
+Ziwei Yin
+Contact: zewey.foster@gmail.com
